@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Guías de reparación de iPhone en español, con la foto de cada paso, herramientas y piezas. Datos bajo demanda de iFixit.">
+<title>Repair Academy — Guías de reparación de iPhone</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet">
+<style>
+/* Dirección de arte: taller técnico limpio y editorial. Superficies cálidas, un solo acento verde azulado, tipografía Cabinet Grotesk (títulos) + Satoshi (texto). Densidad equilibrada. */
+:root,[data-theme="light"]{--bg:#f6f4ef;--surface:#fbfaf7;--surface-2:#ffffff;--offset:#efece5;--dynamic:#e4e1d9;--line:rgba(40,37,29,.13);--text:#25231c;--muted:#615f58;--faint:#8c8a83;--inv:#fbfaf7;--accent:#01696f;--accent-h:#0c4e54;--accent-soft:#dbe9e6;--warn:#964219;--warn-soft:#f1e3d9;--danger:#a13544;--ok:#437a22;--r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:22px;--sh-1:0 1px 2px rgba(40,30,10,.06),0 4px 14px rgba(40,30,10,.04);--sh-2:0 2px 4px rgba(40,30,10,.08),0 14px 34px rgba(40,30,10,.08);--ease:cubic-bezier(.16,1,.3,1);--fd:'Cabinet Grotesk','Satoshi',system-ui,sans-serif;--fb:'Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif}
+[data-theme="dark"]{--bg:#141413;--surface:#1b1b19;--surface-2:#222220;--offset:#1f1f1d;--dynamic:#2c2c29;--line:rgba(236,232,220,.13);--text:#e6e4de;--muted:#a9a7a0;--faint:#7c7a74;--inv:#1b1b19;--accent:#59a8b0;--accent-h:#7cc0c7;--accent-soft:#223436;--warn:#dd9a6c;--warn-soft:#352a21;--danger:#e0828f;--ok:#8fc56a;--sh-1:0 1px 2px rgba(0,0,0,.3);--sh-2:0 12px 34px rgba(0,0,0,.4)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:none;text-size-adjust:none}
+body{min-height:100dvh;background:var(--bg);color:var(--text);font:400 1rem/1.6 var(--fb);-webkit-font-smoothing:antialiased}
+img,svg,video{display:block;max-width:100%;height:auto}
+button,input{font:inherit;color:inherit}button{cursor:pointer;background:none;border:0}
+a{color:var(--accent);text-underline-offset:3px}a:hover{color:var(--accent-h)}
+h1,h2,h3{font-family:var(--fd);line-height:1.1;text-wrap:balance;letter-spacing:-.02em}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--r-sm)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface-2);padding:10px 14px;border-radius:var(--r-md);z-index:100}.skip:focus{left:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.wrap{max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
+/* Cabecera */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;min-height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font:800 1.15rem var(--fd);letter-spacing:-.02em}
+.brand svg{color:var(--accent)}
+.grow{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--surface-2);font-weight:700;font-size:.9rem;text-decoration:none;color:var(--text);transition:background .18s var(--ease),border-color .18s var(--ease),transform .18s var(--ease)}
+.btn:hover{border-color:var(--accent);color:var(--text)}.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.primary:hover{background:var(--accent-h);border-color:var(--accent-h);color:#fff}
+[data-theme="dark"] .btn.primary{color:#0d1112}[data-theme="dark"] .btn.primary:hover{color:#0d1112}
+.btn.ghost{background:transparent}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.ibtn{width:44px;padding:0}
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:clamp(32px,7vw,88px) clamp(24px,4vw,48px)}
+.eyebrow{font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-size:clamp(2.3rem,1rem + 4.6vw,4.4rem);font-weight:800;margin:14px 0 18px;letter-spacing:-.04em}
+.hero p.lead{color:var(--muted);font-size:1.075rem;max-width:52ch}
+.finder{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--sh-2);padding:clamp(18px,3vw,28px);display:grid;gap:14px}
+.finder label{font-weight:700;font-size:.95rem}
+.finder .row{display:flex;gap:10px}
+.input{flex:1;min-width:0;min-height:48px;padding:0 16px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--bg);outline:none;transition:border-color .18s var(--ease),box-shadow .18s var(--ease)}
+.input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent) 22%,transparent)}
+.hint{font-size:.85rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:.85rem;font-weight:500;color:var(--text);transition:all .18s var(--ease)}
+.chip:hover{border-color:var(--accent)}.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
+.chip small{color:var(--faint);margin-left:4px}
+/* Secciones */
+.sec{padding-block:clamp(24px,4vw,48px)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.sec-head h2{font-size:clamp(1.4rem,1.1rem + 1vw,2rem);font-weight:800}
+.sec-head .meta{font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:16px}
+.mcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;text-decoration:none;color:var(--text);box-shadow:var(--sh-1);transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease)}
+.mcard:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:color-mix(in oklab,var(--accent) 50%,var(--line));color:var(--text)}
+.mcard .thumb{aspect-ratio:4/3;background:var(--offset);display:grid;place-items:center;padding:14px}
+.mcard .thumb img{width:100%;height:100%;object-fit:contain}
+.mcard .body{padding:14px 16px 16px;display:grid;gap:2px}
+.mcard h3{font-size:1.05rem;font-weight:700}
+.mcard .n{font-size:.82rem;color:var(--muted)}
+.ph{display:grid;place-items:center;width:100%;height:100%;min-height:90px;color:var(--faint);font-size:.8rem;text-align:center;background:var(--offset);border-radius:var(--r-md);padding:10px}
+.ph svg{width:30px;height:30px;margin:0 auto 6px;opacity:.6}
+.skel{background:linear-gradient(90deg,var(--offset) 25%,var(--dynamic) 50%,var(--offset) 75%);background-size:200% 100%;animation:sh 1.5s ease-in-out infinite;border-radius:var(--r-lg)}
+@keyframes sh{to{background-position:-200% 0}}
+/* Estados */
+.state{padding:clamp(24px,5vw,48px);background:var(--surface);border:1px dashed var(--line);border-radius:var(--r-lg);text-align:left;display:grid;gap:10px;justify-items:start}
+.state h3{font-size:1.3rem}.state p{color:var(--muted);max-width:60ch}
+.state.err{border-style:solid;border-color:color-mix(in oklab,var(--danger) 45%,var(--line))}
+/* Modelo */
+.crumbs{display:flex;gap:8px;align-items:center;font-size:.88rem;color:var(--muted);padding-top:22px;flex-wrap:wrap}
+.crumbs a{color:var(--muted);text-decoration:none}.crumbs a:hover{color:var(--accent)}
+.mhead{display:grid;grid-template-columns:200px minmax(0,1fr);gap:28px;align-items:center;padding-block:22px 8px}
+.mhead .thumb{aspect-ratio:1;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-xl);display:grid;place-items:center;padding:16px}
+.mhead .thumb img{width:100%;height:100%;object-fit:contain}
+.mhead h1{font-size:clamp(2rem,1.2rem + 3vw,3.2rem);font-weight:800;letter-spacing:-.035em}
+.mhead p{color:var(--muted);margin-top:8px;max-width:58ch}
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);text-decoration:none;color:var(--text);transition:border-color .18s var(--ease),transform .18s var(--ease),background .18s var(--ease)}
+.row:hover{border-color:var(--accent);background:var(--surface-2);transform:translateX(2px);color:var(--text)}
+.row .p{min-width:112px;font-size:.78rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.row .t{font-weight:500}
+.badge{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;background:var(--offset);border:1px solid var(--line);font-size:.78rem;font-weight:500;color:var(--muted);white-space:nowrap}
+.badge.ok{background:var(--accent-soft);color:var(--accent);border-color:transparent;font-weight:700}
+.badge.warn{background:var(--warn-soft);color:var(--warn);border-color:transparent;font-weight:700}
+details.more{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:4px 16px}
+details.more summary{cursor:pointer;min-height:46px;display:flex;align-items:center;font-weight:700;font-size:.92rem}
+details.more .rows{padding-block:6px 14px}
+details.more p.hint{padding-bottom:10px}
+/* Guía */
+.ghead{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(20px,4vw,48px);align-items:center;padding-block:22px 12px}
+.ghead .cover{aspect-ratio:4/3;background:var(--offset);border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--line)}
+.ghead .cover img{width:100%;height:100%;object-fit:cover}
+.ghead h1{font-size:clamp(1.8rem,1.1rem + 2.8vw,3rem);font-weight:800;letter-spacing:-.035em;margin:10px 0 14px}
+.rich{color:var(--muted);max-width:68ch}.rich p+p,.rich ul,.rich ol{margin-top:8px}.rich ul,.rich ol{padding-left:1.2em}.rich a{color:var(--accent)}
+.metas{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.note{display:grid;gap:4px;padding:14px 16px;background:var(--warn-soft);border-radius:var(--r-md);font-size:.92rem;margin-top:16px}
+.note strong{color:var(--warn)}
+.note.info{background:var(--offset)}.note.info strong{color:var(--text)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px}
+.panel h2{font-size:1.2rem;font-weight:800;margin-bottom:12px}
+.items{list-style:none;display:grid;gap:8px}
+.item{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px;border-radius:var(--r-md);background:var(--bg)}
+.item .im{width:48px;height:48px;border-radius:var(--r-sm);background:var(--offset);overflow:hidden;display:grid;place-items:center}
+.item .im img{width:100%;height:100%;object-fit:cover}
+.item a,.item span.nm{font-weight:500;font-size:.92rem;color:var(--text);text-decoration:none}.item a:hover{color:var(--accent);text-decoration:underline}
+.item .q{font-size:.8rem;color:var(--muted)}
+.toolbar{position:sticky;top:62px;z-index:15;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0;background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.bar{flex:1;min-width:140px;height:8px;border-radius:99px;background:var(--dynamic);overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .35s var(--ease)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--surface-2)}
+.seg button{min-height:42px;padding:0 14px;font-weight:700;font-size:.85rem;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}[data-theme="dark"] .seg button[aria-pressed="true"]{color:#0d1112}
+.steps{display:grid;gap:18px;margin-top:8px}
+.step{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:clamp(16px,3vw,26px);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);transition:border-color .25s var(--ease),opacity .25s var(--ease)}
+.step.done{opacity:.72;border-color:color-mix(in oklab,var(--ok) 40%,var(--line))}
+.num{font:800 2.1rem/1 var(--fd);color:var(--accent);letter-spacing:-.04em}
+.step h3{font-size:1.3rem;font-weight:800;margin-bottom:10px}
+.lines{list-style:none;display:grid;gap:8px;max-width:72ch}
+.ln{position:relative;padding-left:18px}
+.ln::before{content:'';position:absolute;left:3px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--faint)}
+.ln.l1{margin-left:20px}.ln.l2{margin-left:40px}.ln.l3{margin-left:60px}
+.ln p{display:inline}
+.ln.caution,.ln.note,.ln.reminder{padding:10px 12px 10px 14px;border-radius:var(--r-md);background:var(--offset);margin-left:0}
+.ln.caution{background:var(--warn-soft)}
+.ln.caution::before,.ln.note::before,.ln.reminder::before{display:none}
+.lab{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;margin-right:6px;color:var(--accent)}.ln.caution .lab{color:var(--warn)}
+.gal{margin-top:16px;display:grid;gap:10px;max-width:760px}
+.gal .main{display:block;width:100%;aspect-ratio:4/3;background:var(--offset);border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);position:relative;cursor:zoom-in}
+.gal .main img,.gal .main video{width:100%;height:100%;object-fit:contain}
+.gal .zoom{position:absolute;right:10px;bottom:10px;background:rgba(20,20,19,.72);color:#fff;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:99px}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.thumbs button{width:72px;height:54px;border-radius:var(--r-sm);overflow:hidden;border:2px solid transparent;background:var(--offset);opacity:.75;transition:all .18s var(--ease)}
+.thumbs button[aria-current="true"]{border-color:var(--accent);opacity:1}.thumbs img{width:100%;height:100%;object-fit:cover}
+.nomedia{margin-top:14px;font-size:.88rem;color:var(--muted);background:var(--offset);padding:12px 14px;border-radius:var(--r-md)}
+.check{display:inline-flex;align-items:center;gap:10px;margin-top:18px;min-height:44px;font-weight:700;font-size:.9rem;cursor:pointer}
+.check input{width:22px;height:22px;accent-color:var(--accent)}
+.steps.focus .step{display:none}.steps.focus .step.current{display:grid}
+.pager{display:none;position:sticky;bottom:0;z-index:15;gap:10px;align-items:center;padding:12px 0 calc(12px + env(safe-area-inset-bottom));background:color-mix(in oklab,var(--bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);margin-top:14px}
+.pager.on{display:flex}.pager .c{flex:1;text-align:center;font-weight:700;font-size:.9rem}
+.credit{margin-top:28px;padding:18px 20px;background:var(--offset);border-radius:var(--r-md);font-size:.85rem;color:var(--muted)}
+.credit strong{color:var(--text)}
+details.diag{margin-top:14px;font-size:.8rem;color:var(--muted)}details.diag pre{white-space:pre-wrap;word-break:break-all;background:var(--offset);padding:10px;border-radius:var(--r-sm);margin-top:6px}
+/* Lightbox */
+dialog#lb{border:0;background:transparent;max-width:100vw;max-height:100dvh;width:100%;height:100%;padding:0}
+dialog#lb::backdrop{background:rgba(10,10,9,.88)}
+.lbx{height:100%;display:grid;grid-template-rows:1fr auto;padding:16px;gap:12px}
+.lbx .stage{display:grid;place-items:center;min-height:0;position:relative}
+.lbx img{max-width:100%;max-height:calc(100dvh - 130px);object-fit:contain;border-radius:var(--r-md)}
+.lbx .cap{color:#ddd;text-align:center;font-size:.9rem;display:grid;gap:8px;justify-items:center}
+.lbx .nav{display:flex;gap:10px;align-items:center}
+.lbx .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff}
+.lbx .x{position:absolute;right:0;top:0}
+footer.foot{margin-top:56px;border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:.85rem}
+footer.foot .wrap{display:grid;gap:8px}
+@media(max-width:820px){.hero,.ghead,.two{grid-template-columns:1fr}.mhead{grid-template-columns:110px minmax(0,1fr);gap:16px}.row{grid-template-columns:minmax(0,1fr) auto}.row .p{grid-column:1/-1;min-width:0}.step{grid-template-columns:1fr;gap:6px}.num{font-size:1.6rem}.finder .row{flex-direction:column}.finder .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">Saltar al contenido</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="#/" aria-label="Repair Academy, inicio"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="3" width="16" height="26" rx="4"/><path d="M13 7h6"/><path d="M12 20l5-5 3 3-5 5z"/><path d="M17 15l2-2"/></svg>Repair Academy</a>
+<span class="grow"></span>
+<a class="btn ghost" href="#/">Modelos</a>
+<button class="btn ibtn" id="theme" aria-label="Cambiar a modo oscuro" title="Cambiar tema"></button>
+</div></header>
+<main id="app" tabindex="-1" aria-live="polite"></main>
+<footer class="foot"><div class="wrap">
+<p><strong>Contenido de iFixit.</strong> Las guías, textos e imágenes se consultan bajo demanda en la API pública de iFixit y pertenecen a sus autores. Se publican bajo <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 3.0</a>: uso no comercial, con atribución y la misma licencia. Esta interfaz es una adaptación; cada guía enlaza a su original.</p>
+<p>Proyecto independiente, sin relación con Apple ni con iFixit. Reparar un iPhone implica riesgos (baterías de ion de litio, cristal, herramientas). Sigue siempre las advertencias de cada guía.</p>
+</div></footer>
+<dialog id="lb" aria-label="Visor de imágenes"><div class="lbx"><div class="stage"><button class="btn ibtn x" id="lb-x" aria-label="Cerrar">✕</button><img id="lb-img" alt=""></div><div class="cap"><span id="lb-cap"></span><div class="nav"><button class="btn" id="lb-p">← Anterior</button><span id="lb-c"></span><button class="btn" id="lb-n">Siguiente →</button></div></div></div></dialog>
+<script>
+(()=>{
+'use strict';
+const API='https://www.ifixit.com/api/2.0',SITE='https://www.ifixit.com';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const app=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+const https=u=>String(u||'').replace(/^http:\/\//i,'https://');
+const state={models:[],gen:'all',text:'',focus:false,cur:0,done:new Set(),media:[],guide:null,lastModel:'',lastPart:''};
+const cache=new Map();
+let rid=0;
+
+const PLACE='<div class="ph" role="img" aria-label="Imagen no disponible"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 9"/></svg>Imagen no disponible</div></div>';
+document.addEventListener('error',e=>{const t=e.target;if(t&&t.tagName==='IMG'&&t.dataset.fb!==undefined){const d=document.createElement('div');d.innerHTML=PLACE;t.replaceWith(d.firstChild)}},true);
+
+async function getJSON(path){
+  if(cache.has(path))return cache.get(path);
+  const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),15000);
+  try{
+    const r=await fetch(API+path,{headers:{Accept:'application/json'},signal:ctrl.signal});
+    if(!r.ok){const e=new Error('La API respondió con el código '+r.status);e.status=r.status;throw e}
+    const j=await r.json();cache.set(path,j);return j;
+  }catch(e){
+    if(e.name==='AbortError')throw new Error('La solicitud tardó demasiado');
+    throw e;
+  }finally{clearTimeout(t)}
+}
+
+const IMG_MAIN=['large','standard','medium','huge','original','440x330','thumbnail'];
+const IMG_THUMB=['140x105','thumbnail','mini','200x150','medium','standard'];
+const IMG_FULL=['huge','original','large','standard','medium'];
+function img(o,order=IMG_MAIN){
+  if(!o)return '';
+  if(typeof o==='string')return /^https?:/i.test(o)?https(o):'';
+  if(typeof o!=='object')return '';
+  for(const k of order){const v=o[k];if(typeof v==='string'&&v)return https(v)}
+  if(o.image&&typeof o.image==='object'&&!Array.isArray(o.image)){const r=img(o.image,order);if(r)return r}
+  if(typeof o.url==='string'&&/\.(jpe?g|png|webp|gif)(\?|$)/i.test(o.url))return https(o.url);
+  return '';
+}
+const imgTag=(src,alt,cls='')=>src?`<img ${cls?`class="${cls}" `:''}src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async" data-fb>`:PLACE;
+
+const OK_TAGS=new Set(['B','STRONG','I','EM','U','BR','UL','OL','LI','P','CODE','A']);
+function clean(html){
+  const doc=new DOMParser().parseFromString('<body>'+String(html||'')+'</body>','text/html');
+  const out=document.createElement('div');
+  (function walk(src,dst){
+    src.childNodes.forEach(n=>{
+      if(n.nodeType===3){dst.appendChild(document.createTextNode(n.nodeValue));return}
+      if(n.nodeType!==1)return;
+      const tag=n.tagName;
+      if(['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','SVG'].includes(tag))return;
+      if(OK_TAGS.has(tag)){
+        const el=document.createElement(tag.toLowerCase());
+        if(tag==='A'){let h=n.getAttribute('href')||'';if(h.startsWith('/'))h=SITE+h;if(/^https?:\/\//i.test(h)){el.href=h;el.target='_blank';el.rel='noopener noreferrer'}}
+        walk(n,el);dst.appendChild(el);
+      }else walk(n,dst);
+    });
+  })(doc.body,out);
+  return out.innerHTML;
+}
+const rich=(rendered,raw)=>rendered?clean(rendered):(raw?esc(raw).replace(/\n+/g,'<br>'):'');
+
+/* ---------- Modelos ---------- */
+const BAD=/accessor|charger|cable|adapter|dock|case|app\b|repair/i;
+function rank(n){
+  const s=norm(n),m=s.match(/iphone (\d+)/);
+  if(m)return +m[1]*10+(s.includes('mini')?1:0)+(s.includes('plus')?2:0)+(s.includes('pro max')?5:s.includes('pro')?4:0)+(/\bair\b/.test(s)?6:0);
+  if(/iphone xs max/.test(s))return 102;if(/iphone xs/.test(s))return 101;if(/iphone xr/.test(s))return 103;if(/iphone x\b/.test(s))return 100;
+  if(/iphone se/.test(s))return 60+((s.match(/\d/)||[0])[0])/10;
+  if(/iphone air/.test(s))return 175;
+  return 1;
+}
+function gen(n){
+  const s=norm(n),m=s.match(/iphone (\d+)/);
+  if(m)return +m[1]<=8?'8 y anteriores':'iPhone '+m[1];
+  if(/iphone (x|xs|xr)\b/.test(s))return 'X / XS / XR';
+  if(/iphone se/.test(s))return 'SE';
+  if(/iphone air/.test(s))return 'Air';
+  return '8 y anteriores';
+}
+async function ensureModels(){
+  if(state.models.length)return state.models;
+  const cat=await getJSON('/wikis/CATEGORY/iPhone');
+  const kids=(cat.children||[]).map(c=>typeof c==='string'?c:(c&&(c.title||c.display_title||c.name))).filter(Boolean).filter(n=>/^iphone/i.test(n)&&!BAD.test(n));
+  if(!kids.length)throw new Error('La API no devolvió modelos de iPhone');
+  state.models=[...new Set(kids)].map(n=>({name:n,rank:rank(n),gen:gen(n)})).sort((a,b)=>b.rank-a.rank||a.name.localeCompare(b.name));
+  return state.models;
+}
+const catPath=n=>'/wikis/CATEGORY/'+encodeURIComponent(n);
+
+const PARTS=[
+['bateria','Batería',/batter/],
+['pantalla','Pantalla',/screen|display|lcd|oled|digitizer/],
+['carga','Puerto de carga',/charging|charge port|dock|lightning|usb c/],
+['camara','Cámaras',/camera|lens/],
+['audio','Audio y vibración',/speaker|earpiece|microphone|\bmic\b|loudspeaker|taptic|vibrat/],
+['cristal','Cristal y carcasa',/back glass|rear glass|housing|frame|rear case|back cover/],
+['sim','SIM y botones',/\bsim\b|button|switch|power|volume/],
+['placa','Placa y sensores',/logic board|motherboard|face id|sensor|antenna|wi fi|wifi|bluetooth|nfc|flex|connector/],
+['otros','Otros',/./]];
+const partOf=t=>{const n=norm(t);for(const p of PARTS)if(p[2].test(n))return p;return PARTS[PARTS.length-1]};
+function typeOf(t){const n=norm(t);if(/replacement|installation/.test(n))return['Reemplazo',0];if(/teardown/.test(n))return['Desmontaje',3];if(/disassembl|opening|open |removal/.test(n))return['Apertura',1];return['Guía',2]}
+const SUF=new Set(['pro','max','mini','plus']);
+function exact(title,model){
+  const t=norm(title).split(' '),m=norm(model).split(' ');
+  for(let i=0;i<=t.length-m.length;i++){
+    if(m.every((w,j)=>t[i+j]===w)){const nx=t[i+m.length];if(nx&&SUF.has(nx)&&!m.includes(nx))continue;return true}
+  }
+  return false;
+}
+function guidesOf(cat,model){
+  const seen=new Map(),extra=[];
+  (cat.guides||[]).forEach(g=>{
+    const id=g.guideid||g.id,title=String(g.title||g.display_title||'').trim();
+    if(!id||!title)return;
+    const fl=(g.flags||[]).map(String);
+    if(fl.some(f=>/ARCHIVED|IN_PROGRESS|DRAFT/i.test(f)))return;
+    const o={id,title,thumb:img(g,IMG_THUMB),part:partOf(title),type:typeOf(title),exact:exact(title,model)||exact(g.subject||'',model),star:fl.some(f=>/STARRED/i.test(f))};
+    const k=norm(title);
+    if(seen.has(k)){extra.push(o)}else seen.set(k,o);
+  });
+  return{main:[...seen.values()],extra};
+}
+const byQuality=(a,b)=>(b.star-a.star)||(a.type[1]-b.type[1])||a.title.localeCompare(b.title);
+
+/* ---------- Vistas ---------- */
+const skeleton=(n=8)=>`<div class="grid">${Array.from({length:n},()=>'<div class="skel" style="min-height:230px" aria-hidden="true"></div>').join('')}</div>`;
+function errorView(msg,retry){
+  app.innerHTML=`<div class="wrap sec"><div class="state err" role="alert"><h3>No se pudo cargar la información</h3><p>${esc(msg)}. Puede ser un problema de conexión o un bloqueo del navegador hacia la API de iFixit.</p><div class="chips"><button class="btn primary" id="retry">Reintentar</button><a class="btn" href="${SITE}/Device/iPhone" target="_blank" rel="noopener noreferrer">Abrir iFixit</a></div></div></div>`;
+  $('#retry').addEventListener('click',retry);
+}
+
+const QUICK=[['iPhone 13 · Batería','iPhone 13 bateria'],['iPhone 12 · Pantalla','iPhone 12 pantalla'],['iPhone 14 · Puerto de carga','iPhone 14 carga'],['iPhone 11 · Batería','iPhone 11 bateria'],['iPhone X · Batería','iPhone X bateria']];
+
+async function homeView(){
+  const id=++rid;
+  app.innerHTML=`<div class="wrap"><section class="hero"><div><div class="eyebrow">Guías visuales de iPhone</div><h1>Cada paso, con su propia foto.</h1><p class="lead">Elige tu modelo y encuentra la reparación correcta: herramientas, piezas, advertencias y fotografías paso a paso, en español cuando existe traducción.</p></div>
+<form class="finder" id="finder" role="search"><label for="q">¿Qué quieres reparar?</label><div class="row"><input class="input" id="q" name="q" placeholder="Ej.: iPhone 13 batería" autocomplete="off" enterkeyhint="search"><button class="btn primary" type="submit">Buscar</button></div><div class="hint" id="qhint">Escribe el modelo y la pieza, o toca un acceso rápido.</div><div class="chips">${QUICK.map(q=>`<button type="button" class="chip" data-q="${esc(q[1])}">${esc(q[0])}</button>`).join('')}</div></form></section>
+<section class="sec" id="modelos"><div class="sec-head"><h2>Modelos de iPhone</h2><span class="meta" id="count"></span></div><div class="chips" id="gens" role="group" aria-label="Filtrar por generación" style="margin-bottom:18px"></div><div id="mgrid">${skeleton(8)}</div></section></div>`;
+  $('#q').value=state.text;
+  $('#finder').addEventListener('submit',e=>{e.preventDefault();doSearch($('#q').value)});
+  $$('.chip[data-q]').forEach(b=>b.addEventListener('click',()=>{$('#q').value=b.dataset.q;doSearch(b.dataset.q)}));
+  try{await ensureModels()}catch(e){if(id!==rid)return;$('#mgrid').innerHTML=`<div class="state err" role="alert"><h3>No se pudo cargar el catálogo</h3><p>${esc(e.message)}. Comprueba tu conexión e inténtalo de nuevo.</p><button class="btn primary" id="retry">Reintentar</button></div>`;$('#retry').addEventListener('click',homeView);return}
+  if(id!==rid)return;
+  renderModels();
+}
+function renderModels(){
+  const gens=['all',...new Set(state.models.map(m=>m.gen))];
+  $('#gens').innerHTML=gens.map(g=>`<button class="chip" data-g="${esc(g)}" aria-pressed="${state.gen===g}">${g==='all'?'Todos':esc(g)}</button>`).join('');
+  $$('#gens .chip').forEach(b=>b.addEventListener('click',()=>{state.gen=b.dataset.g;renderModels()}));
+  const t=norm(state.text);
+  const list=state.models.filter(m=>(state.gen==='all'||m.gen===state.gen)&&(!t||t.split(' ').every(w=>norm(m.name).includes(w))));
+  $('#count').textContent=`${list.length} modelo${list.length===1?'':'s'}`;
+  if(!list.length){$('#mgrid').innerHTML='<div class="state"><h3>Ningún modelo coincide</h3><p>Prueba con otro nombre, por ejemplo “iPhone 12”, o quita el filtro de generación.</p></div>';return}
+  $('#mgrid').innerHTML=`<div class="grid">${list.map(m=>`<a class="mcard" href="#/m/${encodeURIComponent(m.name)}" data-m="${esc(m.name)}"><div class="thumb"><div class="skel" style="width:100%;height:100%"></div></div><div class="body"><h3>${esc(m.name)}</h3><span class="n">Cargando…</span></div></a>`).join('')}</div>`;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){io.unobserve(e.target);enqueue(()=>hydrate(e.target))}}),{rootMargin:'300px'});
+  $$('.mcard').forEach(c=>io.observe(c));
+}
+const queue=[];let running=0;
+function enqueue(f){queue.push(f);pump()}
+function pump(){while(running<4&&queue.length){const f=queue.shift();running++;f().finally(()=>{running--;pump()})}}
+async function hydrate(card){
+  const name=card.dataset.m,th=$('.thumb',card),n=$('.n',card);
+  try{
+    const cat=await getJSON(catPath(name));
+    const src=img(cat,['medium','standard','large','thumbnail']);
+    th.innerHTML=imgTag(src,name);
+    const c=guidesOf(cat,name).main.length;
+    n.textContent=c?`${c} guía${c===1?'':'s'}`:'Sin guías aún';
+  }catch{th.innerHTML=PLACE;n.textContent='Ver guías'}
+}
+
+async function doSearch(q){
+  state.text=q.trim();
+  const hint=$('#qhint');
+  if(!state.text)return;
+  try{await ensureModels()}catch(e){if(hint)hint.textContent='No se pudo cargar el catálogo: '+e.message;return}
+  let n=norm(state.text);if(!/iphone/.test(n)&&/\d|\bx\b|\bxs\b|\bxr\b|\bse\b/.test(n))n='iphone '+n;
+  const m=state.models.filter(x=>n.includes(norm(x.name))).sort((a,b)=>b.name.length-a.name.length)[0];
+  const KW={bateria:/bateri|batter/,pantalla:/pantalla|screen|display|lcd/,carga:/carga|charg|puerto|dock|lightning|usb/,camara:/camar|camera|lente/,audio:/altavoz|speaker|bocina|microfono|auricular|audio|vibrador|taptic/,cristal:/cristal|vidrio|tapa trasera|back glass|carcasa|housing/,sim:/\bsim\b|boton|button|volumen|encendido/,placa:/placa|logic|face id|sensor|antena/};
+  let part='';for(const k in KW)if(KW[k].test(n)){part=k;break}
+  if(m){location.hash=`#/m/${encodeURIComponent(m.name)}${part?'/'+part:''}`;return}
+  if(state.models.some(x=>n.split(' ').every(w=>norm(x.name).includes(w)))||document.querySelector('#mgrid')){renderModels();$('#modelos')?.scrollIntoView({behavior:'smooth'});if(hint)hint.textContent='Mostrando los modelos que coinciden. Añade el modelo exacto y la pieza para ir directo a la reparación.'}
+}
+
+async function modelView(name,part){
+  const id=++rid;state.lastModel=name;state.lastPart=part||'';
+  app.innerHTML=`<div class="wrap"><nav class="crumbs" aria-label="Ruta"><a href="#/">Modelos</a><span>/</span><span>${esc(name)}</span></nav><div style="padding-block:24px">${skeleton(3)}</div></div>`;
+  let cat;
+  try{cat=await getJSON(catPath(name))}catch(e){if(id!==rid)return;errorView(e.message,()=>modelView(name,part));return}
+  if(id!==rid)return;
+  const {main,extra}=guidesOf(cat,name);
+  const own=main.filter(g=>g.exact),others=[...main.filter(g=>!g.exact),...extra];
+  const counts={};own.forEach(g=>counts[g.part[0]]=(counts[g.part[0]]||0)+1);
+  const sel=part&&counts[part]?part:'';
+  const shown=own.filter(g=>!sel||g.part[0]===sel).sort(byQuality);
+  const src=img(cat,['large','standard','medium','thumbnail']);
+  const row=g=>`<a class="row" href="#/g/${esc(g.id)}"><span class="p">${esc(g.part[1])}</span><span class="t">${esc(g.title)}</span><span>${g.star?'<span class="badge ok">Destacada</span> ':''}<span class="badge">${esc(g.type[0])}</span></span></a>`;
+  app.innerHTML=`<div class="wrap"><nav class="crumbs" aria-label="Ruta"><a href="#/">Modelos</a><span>/</span><span>${esc(name)}</span></nav>
+<header class="mhead"><div class="thumb">${imgTag(src,name)}</div><div><div class="eyebrow">Modelo</div><h1>${esc(name)}</h1><p>${own.length?`${own.length} guía${own.length===1?'':'s'} para este modelo. Elige la pieza que quieres reparar.`:'Todavía no hay guías específicas para este modelo.'}</p></div></header>
+<section class="sec" style="padding-top:16px"><div class="chips" id="pf" role="group" aria-label="Filtrar por pieza" style="margin-bottom:16px"><button class="chip" data-p="" aria-pressed="${!sel}">Todas<small>${own.length}</small></button>${PARTS.filter(p=>counts[p[0]]).map(p=>`<button class="chip" data-p="${p[0]}" aria-pressed="${sel===p[0]}">${esc(p[1])}<small>${counts[p[0]]}</small></button>`).join('')}</div>
+${shown.length?`<div class="rows">${shown.map(row).join('')}</div>`:`<div class="state"><h3>No hay guías para esta selección</h3><p>iFixit aún no publica una guía exacta de esta pieza para ${esc(name)}. Revisa las guías de otras variantes o abre la página del dispositivo en iFixit.</p><a class="btn" href="${SITE}/Device/${encodeURIComponent(name.replace(/ /g,'_'))}" target="_blank" rel="noopener noreferrer">Ver en iFixit</a></div>`}
+${others.length?`<details class="more"><summary>Guías de otras variantes o versiones (${others.length})</summary><p class="hint">Pueden pertenecer a un modelo parecido. Comprueba la compatibilidad antes de usarlas.</p><div class="rows">${others.sort(byQuality).map(row).join('')}</div></details>`:''}
+</section></div>`;
+  $$('#pf .chip').forEach(b=>b.addEventListener('click',()=>{const p=b.dataset.p;location.hash=`#/m/${encodeURIComponent(name)}${p?'/'+p:''}`}));
+  app.focus({preventScroll:true});window.scrollTo({top:0});
+}
+
+/* ---------- Guía ---------- */
+async function loadGuide(id,lang){
+  const p='/guides/'+encodeURIComponent(id);
+  if(lang==='en')return{g:await getJSON(p),lang:'en'};
+  try{const g=await getJSON(p+'?langid=es');if(g&&Array.isArray(g.steps)&&g.steps.length)return{g,lang:'es'}}catch{}
+  return{g:await getJSON(p),lang:'en'};
+}
+const DIFF={'very easy':'Muy fácil','easy':'Fácil','moderate':'Moderada','difficult':'Difícil','very difficult':'Muy difícil'};
+const diffEs=d=>DIFF[String(d||'').toLowerCase()]||d||'';
+function lineHTML(l){
+  if(typeof l==='string')l={text_raw:l};
+  const html=rich(l.text_rendered,l.text_raw||l.text);
+  if(!String(html).trim())return '';
+  const b=String(l.bullet||'black'),lvl=Math.min(+l.level||0,3);
+  const kind=(b==='icon_caution'||b==='red')?'caution':b==='icon_note'?'note':b==='icon_reminder'?'reminder':'';
+  const lab={caution:'Precaución',note:'Nota',reminder:'Recordatorio'}[kind];
+  return `<li class="ln l${lvl} ${kind}">${lab?`<strong class="lab">${lab}</strong>`:''}${html}</li>`;
+}
+function mediaOf(s){
+  const m=s&&s.media;if(!m)return[];
+  const d=m.data;
+  if(m.type==='video'){
+    const v=Array.isArray(d)?d[0]:d;if(!v)return[];
+    const enc=(v.encodings||[]).find(e=>/mp4/i.test((e.format||'')+(e.url||'')))||(v.encodings||[])[0];
+    if(!enc||!enc.url)return[];
+    return[{kind:'video',src:https(enc.url),poster:img(v.image||v,IMG_MAIN),alt:''}];
+  }
+  const arr=Array.isArray(d)?d:(d?[d]:[]);
+  return arr.map(x=>({kind:'image',main:img(x,IMG_MAIN),thumb:img(x,IMG_THUMB),full:img(x,IMG_FULL),alt:String(x.caption||'').trim()})).filter(x=>x.main);
+}
+function galleryHTML(items,i,title){
+  if(!items.length)return '';
+  const first=items[0],cap=n=>`Paso ${i+1}: ${title||'imagen'} (${n})`;
+  const mainEl=first.kind==='video'?`<video controls preload="none" playsinline ${first.poster?`poster="${esc(first.poster)}"`:''} src="${esc(first.src)}"></video>`:`<img src="${esc(first.main)}" alt="${esc(first.alt||cap(1))}" loading="lazy" decoding="async" data-fb>`;
+  const isImg=first.kind==='image';
+  return `<figure class="gal" data-s="${i}"><button class="main" type="button" data-open="${i}" aria-label="Ampliar imagen del paso ${i+1}" ${isImg?'':'tabindex="-1"'}>${mainEl}${isImg?'<span class="zoom">Ampliar</span>':''}</button>${items.length>1?`<div class="thumbs">${items.map((x,k)=>x.kind==='image'?`<button type="button" data-th="${k}" aria-label="Ver imagen ${k+1} de ${items.length}" ${k===0?'aria-current="true"':''}><img src="${esc(x.thumb||x.main)}" alt="" loading="lazy" decoding="async" data-fb></button>`:'').join('')}</div>`:''}</figure>`;
+}
+function stepHTML(s,i){
+  const items=mediaOf(s);state.media[i]=items;
+  const lines=(Array.isArray(s.lines)?s.lines:[]).map(lineHTML).join('');
+  const t=String(s.title||'').trim();
+  return `<article class="step" id="s${i+1}" data-i="${i}"><div class="num" aria-hidden="true">${String(i+1).padStart(2,'0')}</div><div><h3>${t?esc(t):`Paso ${i+1}`}</h3>${lines?`<ul class="lines">${lines}</ul>`:'<p class="hint">Este paso no incluye texto en la fuente.</p>'}${items.length?galleryHTML(items,i,t):`<p class="nomedia">Este paso no incluye fotografía en la fuente. No se sustituye por una imagen de otra reparación.</p>`}<label class="check"><input type="checkbox" data-done="${i}"> Paso completado</label></div></article>`;
+}
+function itemsHTML(arr){
+  return(arr||[]).map(o=>{
+    const nm=esc(o.text||o.title||o.name||'');if(!nm)return '';
+    let url=o.url||'';if(url&&url.startsWith('/'))url=SITE+url;
+    const th=img(o,['thumbnail','mini','medium','standard'])||(typeof o.thumbnail==='string'?https(o.thumbnail):'');
+    const q=o.quantity&&+o.quantity>1?`×${esc(o.quantity)}`:'';
+    return `<li class="item"><span class="im">${th?`<img src="${esc(th)}" alt="" loading="lazy" decoding="async" data-fb>`:''}</span>${/^https?:/i.test(url)?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${nm}</a>`:`<span class="nm">${nm}</span>`}<span class="q">${q}</span></li>`;
+  }).join('');
+}
+async function guideView(id,lang){
+  const rId=++rid;state.done=new Set();state.cur=0;state.media=[];
+  app.innerHTML=`<div class="wrap"><div style="padding-block:32px">${skeleton(3)}</div></div>`;
+  let res;
+  try{res=await loadGuide(id,lang)}catch(e){if(rId!==rid)return;errorView(e.message,()=>guideView(id,lang));return}
+  if(rId!==rid)return;
+  const g=res.g;state.guide=g;
+  const steps=Array.isArray(g.steps)?g.steps:[];
+  const title=String(g.title||'Guía de reparación');
+  const model=state.lastModel||((norm(title).match(/iphone [a-z0-9 ]+/)||[''])[0]);
+  const tools=itemsHTML(g.tools),parts=itemsHTML(g.parts);
+  const pre=(g.prerequisites||[]).filter(p=>p&&(p.guideid||p.id)&&p.title);
+  const src=img(g,['large','standard','medium','huge','original']);
+  const url=/^https?:/i.test(g.url||'')?g.url:`${SITE}/Guide/${encodeURIComponent(title.replace(/\s+/g,'+'))}/${encodeURIComponent(id)}`;
+  const n=norm(title);
+  const bat=/batter/.test(n);
+  const langLabel=res.lang==='es'&&(!g.langid||g.langid==='es')?'Español':'Inglés (sin traducción disponible)';
+  const anyMedia=state.media.length||0;
+  const stepsHTML=steps.map(stepHTML).join('');
+  const total=state.media.reduce((a,x)=>a+(x?x.length:0),0);
+  const diag=(!total&&steps.length)?`<details class="diag"><summary>Diagnóstico: la API no devolvió imágenes de pasos</summary><pre>${esc(JSON.stringify({step0_keys:Object.keys(steps[0]||{}),media:steps[0]&&steps[0].media?{type:steps[0].media.type,dataKeys:Object.keys((Array.isArray(steps[0].media.data)?steps[0].media.data[0]:steps[0].media.data)||{})}:null},null,1))}</pre></details>`:'';
+  app.innerHTML=`<div class="wrap"><nav class="crumbs" aria-label="Ruta"><a href="#/">Modelos</a>${state.lastModel?`<span>/</span><a href="#/m/${encodeURIComponent(state.lastModel)}${state.lastPart?'/'+state.lastPart:''}">${esc(state.lastModel)}</a>`:''}<span>/</span><span>Guía</span></nav>
+<header class="ghead"><div class="cover">${imgTag(src,title)}</div><div><div class="eyebrow">${esc(langLabel)}</div><h1>${esc(title)}</h1><div class="rich">${rich(g.introduction_rendered,g.introduction_raw||g.introduction)}</div><div class="metas">${g.difficulty?`<span class="badge">Dificultad: ${esc(diffEs(g.difficulty))}</span>`:''}<span class="badge">${steps.length} paso${steps.length===1?'':'s'}</span>${g.time_required?`<span class="badge">Tiempo: ${esc(g.time_required)}</span>`:''}<a class="badge" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Ver original en iFixit ↗</a></div>
+<div class="note"><strong>Antes de empezar</strong><span>Apaga el iPhone y desconecta cualquier cable.${bat?' Si la batería está hinchada o dañada, no la perfores ni la dobles y llévala a un punto de reciclaje autorizado.':' Trabaja sobre una superficie limpia y guarda los tornillos en orden, porque su largo cambia según la posición.'}</span></div>
+${res.lang==='en'?'<div class="note info"><strong>Sin traducción</strong><span>Se muestra la versión original en inglés, sin modificar su contenido.</span></div>':''}</div></header>
+${(tools||parts)?`<section class="sec" style="padding-block:20px"><div class="two">${tools?`<div class="panel"><h2>Herramientas</h2><ul class="items">${tools}</ul></div>`:''}${parts?`<div class="panel"><h2>Piezas</h2><ul class="items">${parts}</ul></div>`:''}</div></section>`:''}
+${pre.length?`<section class="sec" style="padding-block:8px 16px"><div class="panel"><h2>Antes de esta guía</h2><div class="rows">${pre.map(p=>`<a class="row" href="#/g/${esc(p.guideid||p.id)}"><span class="p">Requisito</span><span class="t">${esc(p.title)}</span><span class="badge">Abrir</span></a>`).join('')}</div></div></section>`:''}
+<section aria-label="Pasos"><div class="toolbar"><div class="seg" role="group" aria-label="Modo de lectura"><button id="m-list" aria-pressed="true">Lista</button><button id="m-focus" aria-pressed="false">Paso a paso</button></div><div class="bar" aria-hidden="true"><i id="pg"></i></div><span class="hint" id="pl">0 de ${steps.length}</span>${res.lang==='es'?`<button class="btn ghost" id="orig">Ver en inglés</button>`:`<button class="btn ghost" id="tr">Probar en español</button>`}</div>
+<div class="steps" id="steps">${steps.length?stepsHTML:'<div class="state"><h3>Esta guía no tiene pasos</h3><p>La fuente no incluye pasos publicados. Abre la guía original para ver si existe contenido adicional.</p></div>'}</div>
+<div class="pager" id="pager"><button class="btn" id="pv">← Anterior</button><span class="c" id="pc"></span><button class="btn primary" id="nx">Hecho y siguiente →</button></div>
+${g.conclusion_rendered||g.conclusion_raw?`<div class="panel" style="margin-top:18px"><h2>Para terminar</h2><div class="rich">${rich(g.conclusion_rendered,g.conclusion_raw)}</div></div>`:''}
+${diag}
+<aside class="credit"><strong>Atribución.</strong> «${esc(title)}», de ${g.author&&g.author.username?esc(g.author.username)+' y la comunidad de ':''}iFixit, bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 3.0</a>. Esta versión modifica solo la presentación (diseño, orden de bloques y etiquetas); el texto e imágenes de los pasos provienen del original: <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>.</aside></section></div>`;
+  bindGuide(id,steps.length);
+  app.focus({preventScroll:true});window.scrollTo({top:0});
+}
+function bindGuide(id,total){
+  const stepsEl=$('#steps');if(!stepsEl)return;
+  const upd=()=>{const d=state.done.size;$('#pg').style.width=(total?d/total*100:0)+'%';$('#pl').textContent=`${d} de ${total}`;$$('.step',stepsEl).forEach(s=>s.classList.toggle('done',state.done.has(+s.dataset.i)));$$('[data-done]',stepsEl).forEach(c=>c.checked=state.done.has(+c.dataset.done))};
+  const show=()=>{$$('.step',stepsEl).forEach(s=>s.classList.toggle('current',+s.dataset.i===state.cur));$('#pc').textContent=`Paso ${state.cur+1} de ${total}`;$('#pv').disabled=state.cur===0;$('#nx').textContent=state.cur===total-1?'Hecho ✓':'Hecho y siguiente →'};
+  const setFocus=on=>{state.focus=on;stepsEl.classList.toggle('focus',on);$('#pager').classList.toggle('on',on&&total>0);$('#m-list').setAttribute('aria-pressed',String(!on));$('#m-focus').setAttribute('aria-pressed',String(on));if(on){show();$('#steps').scrollIntoView({behavior:'smooth',block:'start'})}};
+  $('#m-list').addEventListener('click',()=>setFocus(false));
+  $('#m-focus').addEventListener('click',()=>setFocus(true));
+  $('#pv').addEventListener('click',()=>{if(state.cur>0){state.cur--;show();stepsEl.scrollIntoView({behavior:'smooth',block:'start'})}});
+  $('#nx').addEventListener('click',()=>{state.done.add(state.cur);if(state.cur<total-1)state.cur++;upd();show();stepsEl.scrollIntoView({behavior:'smooth',block:'start'})});
+  stepsEl.addEventListener('change',e=>{const c=e.target.closest('[data-done]');if(!c)return;const i=+c.dataset.done;c.checked?state.done.add(i):state.done.delete(i);upd()});
+  stepsEl.addEventListener('click',e=>{
+    const th=e.target.closest('[data-th]');
+    if(th){const fig=th.closest('.gal'),items=state.media[+fig.dataset.s],k=+th.dataset.th,it=items[k];if(!it)return;const im=$('.main img',fig);if(im){im.src=it.main;im.alt=it.alt||`Paso ${+fig.dataset.s+1}, imagen ${k+1}`}$$('[data-th]',fig).forEach(b=>b.removeAttribute('aria-current'));th.setAttribute('aria-current','true');fig.dataset.k=k;return}
+    const op=e.target.closest('[data-open]');
+    if(op){const fig=op.closest('.gal'),items=(state.media[+op.dataset.open]||[]).filter(x=>x.kind==='image');if(!items.length)return;openLB(items,+(fig.dataset.k||0))}
+  });
+  const o=$('#orig'),t=$('#tr');
+  if(o)o.addEventListener('click',()=>guideView(id,'en'));
+  if(t)t.addEventListener('click',()=>guideView(id,'es'));
+  upd();
+}
+
+/* ---------- Visor ---------- */
+const lb=$('#lb');let lbItems=[],lbI=0;
+function drawLB(){const it=lbItems[lbI];if(!it)return;const im=$('#lb-img');im.src=it.full||it.main;im.alt=it.alt||'Imagen del paso';$('#lb-cap').textContent=it.alt||'';$('#lb-c').textContent=`${lbI+1} / ${lbItems.length}`;$('#lb-p').disabled=lbItems.length<2;$('#lb-n').disabled=lbItems.length<2}
+function openLB(items,i){lbItems=items;lbI=i;drawLB();if(!lb.open)lb.showModal()}
+const stepLB=d=>{if(lbItems.length<2)return;lbI=(lbI+d+lbItems.length)%lbItems.length;drawLB()};
+$('#lb-p').addEventListener('click',()=>stepLB(-1));$('#lb-n').addEventListener('click',()=>stepLB(1));$('#lb-x').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});
+lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')stepLB(-1);if(e.key==='ArrowRight')stepLB(1)});
+
+/* ---------- Tema y rutas ---------- */
+const sun='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>';
+const moon='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+const root=document.documentElement,tb=$('#theme');
+function setTheme(t){root.dataset.theme=t;tb.innerHTML=t==='dark'?sun:moon;tb.setAttribute('aria-label',t==='dark'?'Cambiar a modo claro':'Cambiar a modo oscuro')}
+setTheme(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+tb.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark'));
+
+function route(){
+  const h=location.hash.replace(/^#\/?/,'');const p=h.split('/');
+  try{
+    if(p[0]==='m'&&p[1])return modelView(decodeURIComponent(p[1]),p[2]||'');
+    if(p[0]==='g'&&p[1])return guideView(decodeURIComponent(p[1]),'es');
+  }catch(e){}
+  return homeView();
+}
+addEventListener('hashchange',route);
+route();
+})();
+</script>
+</body>
+</html>
